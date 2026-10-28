@@ -3,7 +3,6 @@ title: 个人简历
 layout: about
 date: 2026-10-27 20:30:00
 ---
-
 <div class="cv-wrap">
 <style>
 .page-profile-widget{display:none!important;}
@@ -47,7 +46,7 @@ date: 2026-10-27 20:30:00
 
 <div class="cv-card">
 
-  <header class="cv-head">
+<header class="cv-head">
     <div>
       <h1 class="cv-title">个人简历</h1>
       <p class="cv-slogan">刘思彤 ｜ 在读学生 ｜ 求职意向：Agent Engineer</p>
@@ -57,68 +56,68 @@ date: 2026-10-27 20:30:00
     </div>
   </header>
 
-  <section class="cv-row">
+<section class="cv-row">
     <div class="cv-label">个人信息</div>
     <div class="cv-body">
       <ul class="cv-info">
-        <li><span class="k">姓　　名</span><span class="v">刘思彤（TwoDog）</span></li>
-        <li><span class="k">性　　别</span><span class="v">【】</span></li>
-        <li><span class="k">求职意向</span><span class="v">Agent Engineer</span></li>
-        <li><span class="k">出生年月</span><span class="v">【】</span></li>
-        <li><span class="k">邮　　箱</span><span class="v">1446514792@qq.com</span></li>
-        <li><span class="k">电　　话</span><span class="v">【】</span></li>
-        <li><span class="k">GitHub</span><span class="v">liusitong621</span></li>
-        <li><span class="k">所在地</span><span class="v">【】</span></li>
+        <li><span class="k">姓　　名</span><span class="v">：刘思彤 </span></li>
+        <li><span class="k">性　　别</span><span class="v">：女</span></li>
+        <li><span class="k">求职意向</span><span class="v">：Agent Engineer</span></li>
+        <li><span class="k">出生年月</span><span class="v">：2006.6.21</span></li>
+        <li><span class="k">邮　　箱</span><span class="v">：1446514792@qq.com</span></li>
+        <li><span class="k">电　　话</span><span class="v">：13643473526</span></li>
+        <li><span class="k">GitHub</span><span class="v">：liusitong621</span></li>
+        <li><span class="k">所在地</span><span class="v">：上海</span></li>
       </ul>
     </div>
   </section>
 
-  <section class="cv-row">
-    <div class="cv-label">教育背景</div>
+<section class="cv-row">
+    <div class="cv-label">教育背景：</div>
     <div class="cv-body">
       <div class="cv-item-head">
-        <strong>【学校名称】 · 【专业】 · 【本科／硕士】</strong>
-        <span class="cv-date">【起止年份】</span>
+        <strong> 计算机科学与技术 · 本科 </strong>
+        <span class="cv-date">· 2024-2028</span>
       </div>
-      <p class="cv-line">专业排名：【x／y】　｜　英语水平：【CET-4／CET-6 分数】</p>
-      <p class="cv-line">主修课程：【课程一、课程二、课程三……】</p>
+      <p class="cv-line">英语水平：CET-6</p>
+      <p class="cv-line">主修课程：数据结构与算法，Agent开发，操作系统，计算机组成原理，计算机网络，python程序语言设计等</p>
     </div>
   </section>
 
-  <section class="cv-row">
+<section class="cv-row">
     <div class="cv-label">项目经历</div>
     <div class="cv-body">
       <div class="cv-item">
         <div class="cv-item-head">
           <strong>实验室预约与管理系统（LabManagementSystem）</strong>
-          <span class="cv-date">【起止时间】</span>
+          <span class="cv-date">2026.7-2026.10</span>
         </div>
         <ul class="cv-ul">
           <li>面向高校实验室的预约与设备借用系统，目标是让师生用「页面操作」或「自然语言对话」完成实验室预约、设备借用与申请进度查询。</li>
-          <li><strong>负责模块：</strong>【前端／后端／Agent 模块，按实际填写】</li>
+          <li><strong>负责模块：</strong>全栈／Agent 模块</li>
           <li><strong>核心功能：</strong>实验室预约、设备借用、申请进度查询，以及支持自然语言对话的实验室智能助手（Agent）。</li>
-          <li><strong>技术栈：</strong>【如 Python + FastAPI + MySQL + Vue】</li>
-          <li><strong>产出：</strong>沉淀 PRD、实现方案与踩坑记录，整理为公开技术文档。</li>
+          <li><strong>技术栈：</strong>Python + FastAPI + MySQL + Vue</li>
+          <li><strong>产出：</strong>沉淀 PRD、实现方案与开发经验，整理为公开技术文档。</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="cv-row">
+<section class="cv-row">
     <div class="cv-label">技能清单</div>
     <div class="cv-body">
       <ul class="cv-ul">
-        <li><strong>编程语言：</strong>Python、JavaScript／TypeScript【、C++／Java 等按实际补充】</li>
-        <li><strong>AI ／ Agent：</strong>大语言模型应用开发、自然语言对话式智能体；了解 RAG、Function Calling（工具调用）。</li>
-        <li><strong>后端 ／ 数据库：</strong>【FastAPI／Flask、MySQL／PostgreSQL】</li>
-        <li><strong>前端 ／ 部署：</strong>【Vue／React、Cloudflare Pages／Docker】</li>
-        <li><strong>工具链：</strong>Git、Linux 基础、RESTful API 设计</li>
+        <li><strong>编程语言：</strong>Python、C++</li>
+        <li><strong>AI ／ Agent：</strong>大语言模型应用开发、自然语言对话式智能体；了解 RAG、Function Calling。</li>
+        <li><strong>后端 ／ 数据库：</strong>FastAPI／Flask、MySQL／PostgreSQL</li>
+        <li><strong>前端 ／ 部署：</strong>Vue／React、Cloudflare Pages／Docker</li>
+        <li><strong>工具链：</strong>Git协作、Linux 、RESTful API 设计理念</li>
       </ul>
     </div>
   </section>
 
-  <section class="cv-row">
-    <div class="cv-label">刷题算法</div>
+<section class="cv-row">
+    <div class="cv-label">竞赛经历</div>
     <div class="cv-body">
       <ul class="cv-ul">
         <li>持续刷 LeetCode，整理算法笔记（数组、二分查找等），侧重工程化解题思路。</li>
@@ -127,7 +126,7 @@ date: 2026-10-27 20:30:00
     </div>
   </section>
 
-  <section class="cv-row">
+<section class="cv-row">
     <div class="cv-label">自我评价</div>
     <div class="cv-body">
       <ul class="cv-ul">
@@ -137,7 +136,7 @@ date: 2026-10-27 20:30:00
     </div>
   </section>
 
-  <p class="cv-foot">想聊聊 Agent、全栈或刷题？欢迎通过上方邮箱或 GitHub 找我 ☕</p>
+<p class="cv-foot">想聊聊 Agent、全栈或算法？欢迎通过上方邮箱或 GitHub 找我 ☕</p>
 
 </div>
 </div>

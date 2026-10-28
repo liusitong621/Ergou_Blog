@@ -1,0 +1,21 @@
+{
+  "repository": "",
+  "branch": "main",
+  "message": "Site updated: {{ now(\"YYYY-MM-DD HH:mm:ss\") }}",
+  "token": "",
+  "cloudflare": {
+    "accountId": "",
+    "projectName": "",
+    "apiToken": ""
+  },
+  "edgeone": {
+    "projectName": "",
+    "apiToken": "",
+    "env": "production"
+  },
+  "deployType": "github",
+  "enabledPlatforms": [
+    "cloudflare-pages"
+  ],
+  "lastDeployTime": ""
+}

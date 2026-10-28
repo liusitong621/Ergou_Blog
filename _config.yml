@@ -1,42 +1,30 @@
-# Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
-
-# Site
 title: TwoDog's Blog
 subtitle: ''
 description: ''
-keywords:
+keywords: null
 author: TwoDog
 language: zh-CN
-timezone: 'Asia/Shanghai'
-
-# URL
-## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+timezone: Asia/Shanghai
 url: https://ergoublog.pages.dev
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+permalink: ':year/:month/:day/:title/'
+permalink_defaults: null
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
-
-# Directory
+  trailing_index: true
+  trailing_html: true
 source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
-
-# Writing
-new_post_name: :title.md # File name of new posts
+i18n_dir: ':lang'
+skip_render: null
+new_post_name: ':title.md'
 default_layout: post
-titlecase: false # Transform title into titlecase
+titlecase: false
 external_link:
-  enable: true # Open external links in new tab
-  field: site # Apply to the whole site
+  enable: true
+  field: site
   exclude: ''
 filename_case: 0
 render_drafts: false
@@ -54,105 +42,72 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
-
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
   per_page: 10
-  order_by: -date
-
-# Category & Tag
+  order_by: '-date'
 default_category: uncategorized
-category_map:
-tag_map:
-
-# Metadata elements
-## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+category_map: null
+tag_map: null
 meta_generator: true
-
-# Date / Time format
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
-## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
-
-# Pagination
-## Set per_page to 0 to disable pagination
+updated_option: mtime
 per_page: 10
 pagination_dir: page
-
-# Include / Exclude file(s)
-## include:/exclude: options only apply to the 'source/' folder
-include:
-exclude:
-ignore:
-
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
+include: null
+exclude: null
+ignore: null
 theme: firefly
-
-# Firefly 主题个性化配置（覆盖 themes/firefly/_config.yml，主题升级不会被冲掉）
 theme_config:
   nav:
-    title: "TwoDog's Blog"
+    title: TwoDog's Blog
     logo:
-      alt: "TwoDog"
+      alt: TwoDog
   profile:
-    name: "TwoDog"
-    bio: "努力成为Agent Engineer的🥬🐶"
-    avatar: "/img/avatar.jpg"
+    name: TwoDog
+    bio: 努力成为Agent Engineer的🥬🐶
+    avatar: /img/avatar.jpg
   home_text:
-    title: "Welcome to TwoDog's Blog！"
-    subtitle: "游千百遍千万遍快乐人间~"
+    title: Welcome to TwoDog's Blog！
+    subtitle: 游千百遍千万遍快乐人间~
   music:
     meting:
-      type: "song"
-      id: "2717588324"
-  # 侧边栏组件：已去掉「站点信息」卡片（原 type: site-info）
+      type: song
+      id: '2717588324'
   widgets:
-    - type: "profile"
+    - type: profile
       enable: true
-      position: "left"
-    - type: "announcement"
+      position: left
+    - type: announcement
       enable: true
-      position: "left"
-    - type: "music"
+      position: left
+    - type: music
       enable: true
-      position: "left"
-    - type: "categories"
+      position: left
+    - type: categories
       enable: true
-      position: "left"
-    - type: "tags"
+      position: left
+    - type: tags
       enable: false
-      position: "left"
-    - type: "dynamic"
+      position: left
+    - type: dynamic
       enable: false
-      position: "right"
-    - type: "stats"
+      position: right
+    - type: stats
       enable: true
-      position: "right"
-    - type: "calendar"
+      position: right
+    - type: calendar
       enable: true
-      position: "right"
-    # 关闭「站点信息」卡片（Hexo 合并数组按位置逐项覆盖，此项须与主题默认顺序对齐）
-    - type: "site-info"
+      position: right
+    - type: site-info
       enable: false
-      position: "right"
+      position: right
   footer:
-    # 关闭页脚「访客 / 浏览」计数
     visitor_counter: false
   analytics:
-    # 关闭不蒜子统计（顺带不再加载其外部脚本）
     busuanzi: false
   sidebar:
-    # 移动端底部组件同样去掉「站点信息」
     mobile_bottom_components:
       - type: profile
         enable: true
@@ -175,39 +130,30 @@ theme_config:
         position: top
         show_on_post: true
         collapse_threshold: 10
-      # 关闭「站点信息」卡片（与主题默认顺序第 6 项对齐）
       - type: site-info
         enable: false
         position: top
         show_on_post: true
-  # 左上角 Logo 图标：🍀 → 🐶（导航栏渲染 theme.logo.icon）
   logo:
-    icon: "🐶"
-  # Banner 背景图：换成用户提供的图片（source/img/wallpaper.jpg）
-  # 注意：数组按位置合并，只覆盖第 1 项即可（轮播已关闭，只用第 1 张）
+    icon: 🐶
   wallpaper:
     src:
-      - desktop: "/img/wallpaper.jpg"
-        mobile: "/img/wallpaper.jpg"
-  # 关闭导航栏「友链」入口（pages.friends 设为对象并 enable:false，导航栏 if 判断不再渲染）
+      - desktop: /img/wallpaper.jpg
+        mobile: /img/wallpaper.jpg
   pages:
     friends:
       enable: false
-    # 关闭「动态」导航项
     dynamic: false
-    # 关闭「标签」导航项（主题模板原本写死，已在 navigation.ejs 加 if 判断）
     tags: false
-  # 社交链接：仅保留 GitHub 与邮箱（Sponsor、RSS 均已删除；数组按位置合并，需与主题默认项数一致）
   social:
-    - name: "GitHub"
-      icon: "github"
-      url: "https://github.com/liusitong621"
-    - name: "Email"
-      icon: "mail"
-      url: "mailto:1446514792@qq.com"
-
-
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
+    - name: GitHub
+      icon: github
+      url: https://github.com/liusitong621
+    - name: Email
+      icon: mail
+      url: mailto:1446514792@qq.com
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/.git
+  branch: main
+  message: 'Site updated: {{ now("YYYY-MM-DD HH:mm:ss") }}'
