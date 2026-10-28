@@ -2,7 +2,7 @@
 title: "实验室智能助手（Agent）模块 — 后端实现步骤指南"
 date: 2026-10-28 11:13:05
 categories:
-  - project
+  - ProjectImplementation
 ---
 
 # 实验室智能助手（Agent）模块 — 后端实现步骤指南

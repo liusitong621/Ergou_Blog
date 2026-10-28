@@ -2,7 +2,7 @@
 title: "实验室智能助手（Agent）— 上线补充方案实现步骤指南"
 date: 2026-10-28 11:07:29
 categories:
-  - project
+  - ProjectImplementation
 ---
 
 # 实验室智能助手（Agent）— 上线补充方案实现步骤指南

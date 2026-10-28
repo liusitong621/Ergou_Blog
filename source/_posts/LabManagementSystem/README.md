@@ -1,6 +1,8 @@
 ---
 title: "实验室预约与管理系统（LabManagementSystem）— 项目文档"
 date: 2026-10-28 13:10:43
+categories:
+  - ProjectREADME
 ---
 
 # 实验室预约与管理系统（LabManagementSystem）— 项目文档

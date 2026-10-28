@@ -2,7 +2,7 @@
 title: "Lab开发中遇到的问题和解答："
 date: 2026-10-28 13:11:31
 categories:
-  - experience
+  - Experience
 ---
 
 

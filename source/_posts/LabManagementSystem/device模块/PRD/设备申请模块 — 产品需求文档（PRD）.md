@@ -2,7 +2,7 @@
 title: "设备申请模块 — 产品需求文档（PRD）"
 date: 2026-10-28 11:11:07
 categories:
-  - project
+  - ProjectPRD
 ---
 
 # 设备申请模块 — 产品需求文档（PRD）
