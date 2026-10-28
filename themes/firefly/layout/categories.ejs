@@ -1,0 +1,75 @@
+<%
+/**
+ * Categories list page matching design mockup.
+ */
+var sidebar = theme.sidebar || {};
+var sidebarPosition = sidebar.position || 'both';
+var showLeftSidebar = sidebarPosition === 'both' || sidebarPosition === 'left';
+var showRightSidebar = sidebarPosition === 'both' || sidebarPosition === 'right';
+var gridClass = 'has-no-sidebar';
+if (showLeftSidebar && showRightSidebar) {
+  gridClass = 'has-both-sidebars';
+} else if (showLeftSidebar) {
+  gridClass = 'has-left-sidebar';
+} else if (showRightSidebar) {
+  gridClass = 'has-right-sidebar';
+}
+
+var allCategories = site.categories.find({ parent: { $exists: false } }).sort('length', -1).filter(function(cat) {
+  return cat.length > 0;
+});
+%>
+
+<div id="main-grid" class="main-grid-layout <%= gridClass %>">
+  <!-- ===== Left Sidebar ===== -->
+  <% if (showLeftSidebar) { %>
+  <aside class="sidebar-left" aria-label="<%= __('sidebar.left') %>">
+    <%- partial('_partials/post/sidebar-left') %>
+  </aside>
+  <% } %>
+
+  <!-- ===== Main Content ===== -->
+  <main id="main-content" class="categories-container">
+    <%- partial('_partials/post/content-nav') %>
+
+    <!-- Header Card -->
+    <div class="categories-header-card card-base">
+      <h1 class="categories-header-title">分类</h1>
+      <p class="categories-header-subtitle">全部分类 · <%= site.posts.length %> 篇文章</p>
+    </div>
+
+    <!-- Category Cards Grid -->
+    <div class="categories-grid">
+      <% if (allCategories.length > 0) { %>
+        <% allCategories.forEach(function(cat) { %>
+        <a href="<%= url_for(cat.path) %>" class="category-grid-card card-base">
+          <div class="category-grid-icon">
+            <span class="material-symbols-outlined">folder</span>
+          </div>
+          <div class="category-grid-info">
+            <h2 class="category-grid-name"><%= cat.name %></h2>
+            <span class="category-grid-count"><%= cat.posts.length %> 篇文章</span>
+          </div>
+          <span class="material-symbols-outlined category-grid-arrow">chevron_right</span>
+        </a>
+        <% }); %>
+      <% } else { %>
+      <div class="categories-empty card-base">
+        <p><%= __('category.empty') %></p>
+      </div>
+      <% } %>
+    </div>
+  </main>
+
+  <!-- ===== Right Sidebar ===== -->
+  <% if (showRightSidebar) { %>
+  <aside class="sidebar-right" aria-label="<%= __('sidebar.right') %>">
+    <%- partial('_partials/post/sidebar-right') %>
+  </aside>
+  <% } %>
+
+  <!-- ===== Mobile Bottom Sidebar ===== -->
+  <%- partial('_partials/post/mobile-sidebar') %>
+
+  <%- partial('_partials/footer') %>
+</div>

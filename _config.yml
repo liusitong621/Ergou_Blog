@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: TwoDog's Blog
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: TwoDog
+language: zh-CN
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://ergoublog.pages.dev
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -96,7 +96,116 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: firefly
+
+# Firefly 主题个性化配置（覆盖 themes/firefly/_config.yml，主题升级不会被冲掉）
+theme_config:
+  nav:
+    title: "TwoDog's Blog"
+    logo:
+      alt: "TwoDog"
+  profile:
+    name: "TwoDog"
+    bio: "努力成为Agent Engineer的🥬🐶"
+    avatar: "/img/avatar.jpg"
+  home_text:
+    title: "Welcome to TwoDog's Blog！"
+    subtitle: "游千百遍千万遍快乐人间~"
+  music:
+    meting:
+      type: "song"
+      id: "2717588324"
+  # 侧边栏组件：已去掉「站点信息」卡片（原 type: site-info）
+  widgets:
+    - type: "profile"
+      enable: true
+      position: "left"
+    - type: "announcement"
+      enable: true
+      position: "left"
+    - type: "music"
+      enable: true
+      position: "left"
+    - type: "categories"
+      enable: true
+      position: "left"
+    - type: "tags"
+      enable: false
+      position: "left"
+    - type: "dynamic"
+      enable: false
+      position: "right"
+    - type: "stats"
+      enable: true
+      position: "right"
+    - type: "calendar"
+      enable: true
+      position: "right"
+    # 关闭「站点信息」卡片（Hexo 合并数组按位置逐项覆盖，此项须与主题默认顺序对齐）
+    - type: "site-info"
+      enable: false
+      position: "right"
+  footer:
+    # 关闭页脚「访客 / 浏览」计数
+    visitor_counter: false
+  analytics:
+    # 关闭不蒜子统计（顺带不再加载其外部脚本）
+    busuanzi: false
+  sidebar:
+    # 移动端底部组件同样去掉「站点信息」
+    mobile_bottom_components:
+      - type: profile
+        enable: true
+        position: top
+        show_on_post: true
+      - type: music
+        enable: true
+        position: top
+        show_on_post: true
+      - type: dynamic
+        enable: true
+        position: top
+        show_on_post: true
+      - type: stats
+        enable: true
+        position: top
+        show_on_post: true
+      - type: tags
+        enable: true
+        position: top
+        show_on_post: true
+        collapse_threshold: 10
+      # 关闭「站点信息」卡片（与主题默认顺序第 6 项对齐）
+      - type: site-info
+        enable: false
+        position: top
+        show_on_post: true
+  # 左上角 Logo 图标：🍀 → 🐶（导航栏渲染 theme.logo.icon）
+  logo:
+    icon: "🐶"
+  # Banner 背景图：换成用户提供的图片（source/img/wallpaper.jpg）
+  # 注意：数组按位置合并，只覆盖第 1 项即可（轮播已关闭，只用第 1 张）
+  wallpaper:
+    src:
+      - desktop: "/img/wallpaper.jpg"
+        mobile: "/img/wallpaper.jpg"
+  # 关闭导航栏「友链」入口（pages.friends 设为对象并 enable:false，导航栏 if 判断不再渲染）
+  pages:
+    friends:
+      enable: false
+    # 关闭「动态」导航项
+    dynamic: false
+    # 关闭「标签」导航项（主题模板原本写死，已在 navigation.ejs 加 if 判断）
+    tags: false
+  # 社交链接：仅保留 GitHub 与邮箱（Sponsor、RSS 均已删除；数组按位置合并，需与主题默认项数一致）
+  social:
+    - name: "GitHub"
+      icon: "github"
+      url: "https://github.com/liusitong621"
+    - name: "Email"
+      icon: "mail"
+      url: "mailto:1446514792@qq.com"
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

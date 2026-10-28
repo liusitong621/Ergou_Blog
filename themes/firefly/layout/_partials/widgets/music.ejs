@@ -1,0 +1,211 @@
+<% if (theme.music && theme.music.mode !== 'none') { %>
+<div class="widget music-widget">
+  <div class="widget-header">
+    <span class="material-symbols-outlined">library_music</span>
+    <span><%= __('music') %></span>
+  </div>
+  <div class="widget-body">
+    <% if (theme.music.mode === 'meting' && theme.music.meting) { %>
+      <meting-js
+        server="<%= theme.music.meting.server || 'netease' %>"
+        type="<%= theme.music.meting.type || 'playlist' %>"
+        id="<%= theme.music.meting.id || '' %>"
+        api="<%= theme.music.meting.api || 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r' %>"
+        order="<%= theme.music.play_mode || 'list' %>"
+        fixed="false"
+        mini="false"
+        autoplay="false"
+        theme="var(--primary)"
+        loop="all"
+        preload="auto"
+        volume="<%= (theme.music.volume || 0.7) %>"
+        mutex="true">
+      </meting-js>
+    <% } else if (theme.music.mode === 'local' && theme.music.local && theme.music.local.playlist) { %>
+      <div id="aplayer-local" class="aplayer"></div>
+      <script>
+        window.__LOCAL_PLAYLIST = <%- JSON.stringify(theme.music.local.playlist) %>;
+      </script>
+    <% } %>
+  </div>
+</div>
+
+<script>
+(function() {
+  function bindAPlayer(ap) {
+    if (!ap) return;
+
+    function getAPInstance() {
+      if (ap.aplayer) return ap.aplayer;
+      if (window.aplayers && window.aplayers.length > 0) {
+        for (var i = 0; i < window.aplayers.length; i++) {
+          if (window.aplayers[i].container === ap || ap.contains(window.aplayers[i].container)) {
+            return window.aplayers[i];
+          }
+        }
+        return window.aplayers[0];
+      }
+      return null;
+    }
+
+    // Ensure cover image is circular
+    var pic = ap.querySelector('.aplayer-pic');
+    if (pic) pic.style.borderRadius = '50%';
+
+    // Inject or query custom control bar
+    var controls = ap.querySelector('.custom-music-controls');
+    if (!controls) {
+      controls = document.createElement('div');
+      controls.className = 'custom-music-controls';
+      controls.innerHTML = `
+        <button class="music-ctrl-btn music-btn-mode" title="列表循环" type="button">
+          <span class="material-symbols-outlined">repeat</span>
+        </button>
+        <button class="music-ctrl-btn music-btn-prev" title="上一首" type="button">
+          <span class="material-symbols-outlined">skip_previous</span>
+        </button>
+        <button class="music-ctrl-btn music-btn-play" title="播放/暂停" type="button">
+          <svg class="play-triangle-svg" viewBox="0 0 24 24" width="26" height="26" style="display:block;margin:0 auto;">
+            <path fill="#10b981" d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+        <button class="music-ctrl-btn music-btn-next" title="下一首" type="button">
+          <span class="material-symbols-outlined">skip_next</span>
+        </button>
+        <button class="music-ctrl-btn music-btn-list" title="播放列表" type="button">
+          <span class="material-symbols-outlined">queue_music</span>
+        </button>
+      `;
+      var body = ap.querySelector('.aplayer-body');
+      if (body) body.appendChild(controls);
+    }
+
+    var playBtn = controls.querySelector('.music-btn-play');
+
+    playBtn.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var apInst = getAPInstance();
+      if (apInst) {
+        apInst.toggle();
+      } else {
+        var audio = ap.querySelector('audio');
+        if (audio) {
+          if (audio.paused) audio.play(); else audio.pause();
+        } else {
+          var origBtn = ap.querySelector('.aplayer-button');
+          if (origBtn) origBtn.click();
+        }
+      }
+    };
+
+    controls.querySelector('.music-btn-prev').onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var apInst = getAPInstance();
+      if (!apInst || !apInst.list) return;
+      var mode = window.__FIREFLY_MUSIC_MODE || 'list';
+      if (mode === 'random') {
+        var total = apInst.list.audios.length;
+        var nextIdx = Math.floor(Math.random() * total);
+        apInst.list.switch(nextIdx);
+      } else {
+        apInst.skipBack();
+      }
+      apInst.play();
+    };
+
+    controls.querySelector('.music-btn-next').onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var apInst = getAPInstance();
+      if (!apInst || !apInst.list) return;
+      var mode = window.__FIREFLY_MUSIC_MODE || 'list';
+      if (mode === 'random') {
+        var total = apInst.list.audios.length;
+        var nextIdx = Math.floor(Math.random() * total);
+        apInst.list.switch(nextIdx);
+      } else {
+        apInst.skipForward();
+      }
+      apInst.play();
+    };
+
+    controls.querySelector('.music-btn-list').onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var list = ap.querySelector('.aplayer-list');
+      if (list) {
+        list.classList.toggle('aplayer-list-show');
+      }
+    };
+
+    var modeBtn = controls.querySelector('.music-btn-mode');
+    var modes = [
+      { key: 'list', title: '列表循环', icon: 'repeat' },
+      { key: 'single', title: '单曲循环', icon: 'repeat_one' },
+      { key: 'random', title: '随机播放', icon: 'shuffle' }
+    ];
+    var currentModeIndex = 0;
+
+    modeBtn.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      currentModeIndex = (currentModeIndex + 1) % modes.length;
+      var activeMode = modes[currentModeIndex];
+      window.__FIREFLY_MUSIC_MODE = activeMode.key;
+
+      var modeIcon = this.querySelector('.material-symbols-outlined');
+      if (modeIcon) modeIcon.textContent = activeMode.icon;
+      this.title = activeMode.title;
+
+      var apInst = getAPInstance();
+      if (apInst && apInst.notice) {
+        apInst.notice('播放模式: ' + activeMode.title);
+      }
+    };
+
+    // Attach custom capture-phase ended listener on audio element to enforce mode
+    var audio = ap.querySelector('audio');
+    if (audio && !audio.dataset.customEndedBound) {
+      audio.dataset.customEndedBound = '1';
+      audio.addEventListener('ended', function(e) {
+        var mode = window.__FIREFLY_MUSIC_MODE || 'list';
+        var apInst = getAPInstance();
+        if (!apInst || !apInst.list) return;
+
+        var total = apInst.list.audios.length;
+        var current = apInst.list.index;
+
+        if (mode === 'single') {
+          e.stopPropagation();
+          audio.currentTime = 0;
+          audio.play();
+        } else if (mode === 'random') {
+          e.stopPropagation();
+          var nextIdx = Math.floor(Math.random() * total);
+          if (total > 1 && nextIdx === current) {
+            nextIdx = (current + 1) % total;
+          }
+          apInst.list.switch(nextIdx);
+          apInst.play();
+        }
+      }, true);
+    }
+  }
+
+  function initAll() {
+    document.querySelectorAll('.music-widget .aplayer').forEach(bindAPlayer);
+  }
+
+  var observer = new MutationObserver(function() {
+    initAll();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  document.addEventListener('DOMContentLoaded', initAll);
+  document.addEventListener('pjax:complete', initAll);
+  initAll();
+})();
+</script>
+<% } %>

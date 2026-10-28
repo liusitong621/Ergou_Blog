@@ -1,0 +1,103 @@
+<%
+var footerConfig = theme.footer || {};
+var showLicense = footerConfig.license !== false;
+var showPoweredBy = footerConfig.powered_by !== false;
+var showVisitorCounter = footerConfig.visitor_counter !== false;
+var customFooterHTML = footerConfig.custom || '';
+
+var beianConfig = footerConfig.beian || theme.beian || {};
+var showBeian = !!(beianConfig && (beianConfig.enable === true || beianConfig.enable === 'true'));
+var icpText = beianConfig.icp || '';
+var icpUrl = beianConfig.icp_url || 'https://beian.miit.gov.cn/';
+var gonganText = beianConfig.gongan || '';
+var gonganIcon = beianConfig.gongan_icon || '';
+var gonganUrl = beianConfig.gongan_url || '';
+%>
+
+<footer id="site-footer" class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+
+    <% if (showLicense) { %>
+    <div class="footer-license">
+      <span class="footer-license-icons">
+        <span class="material-symbols-outlined md-18">copyright</span>
+        <span class="material-symbols-outlined md-18">person</span>
+        <span class="material-symbols-outlined md-18">money_off</span>
+        <span class="material-symbols-outlined md-18">share</span>
+      </span>
+      <span class="license-text">
+        <% if (footerConfig.license_text) { %>
+        <%- footerConfig.license_text %>
+        <% } else { %>
+        <%= __('license_text', 'CC BY-NC-SA 4.0') || 'This work is licensed under CC BY-NC-SA 4.0' %>
+        <% } %>
+      </span>
+    </div>
+    <% } %>
+
+    <div class="footer-copyright">
+      <span>&copy; <%= new Date().getFullYear() %> <%= config.title || config.author || 'Firefly' %></span>
+      <% if (config.author && config.author !== config.title) { %>
+      <span class="footer-author"><%= __('by') || 'by' %> <%= config.author %></span>
+      <% } %>
+    </div>
+
+    <% if (customFooterHTML) { %>
+    <div class="footer-custom">
+      <%- customFooterHTML %>
+    </div>
+    <% } %>
+
+    <% if (showPoweredBy) { %>
+    <div class="footer-powered-by">
+      <span><%= __('powered_by') || 'Powered by' %> <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a></span>
+      <span class="footer-separator">|</span>
+      <span><%= __('theme') || 'Theme' %> <a href="https://github.com/LKDenchin/hexo-theme-firefly" target="_blank" rel="noopener noreferrer">Firefly</a></span>
+    </div>
+    <% } %>
+
+    <% if (showVisitorCounter && theme.analytics && theme.analytics.busuanzi !== false) { %>
+    <div class="footer-visitor-counter">
+      <span id="busuanzi_container_site_uv" class="visitor-count-item">
+        <span class="material-symbols-outlined md-18">person</span>
+        <span id="busuanzi_value_site_uv">-</span> <%= __('visitors') || 'visitors' %>
+      </span>
+      <span class="footer-separator">|</span>
+      <span id="busuanzi_container_site_pv" class="visitor-count-item">
+        <span class="material-symbols-outlined md-18">visibility</span>
+        <span id="busuanzi_value_site_pv">-</span> <%= __('views') || 'views' %>
+      </span>
+    </div>
+    <% } %>
+
+    <% if (showBeian && (icpText || gonganText)) { %>
+    <div class="footer-beian">
+      <% if (icpText) { %>
+      <span class="beian-item">
+        <a href="<%= icpUrl %>" target="_blank" rel="noopener noreferrer"><%= icpText %></a>
+      </span>
+      <% } %>
+      <% if (icpText && gonganText) { %>
+      <span class="footer-separator">|</span>
+      <% } %>
+      <% if (gonganText) { %>
+      <span class="beian-item">
+        <% if (gonganUrl) { %>
+        <a href="<%= gonganUrl %>" target="_blank" rel="noopener noreferrer">
+        <% } %>
+          <% if (gonganIcon) { %>
+          <img src="<%= url_for(gonganIcon) %>" class="beian-icon" alt="gongan" />
+          <% } else { %>
+          <span class="material-symbols-outlined md-18">verified_user</span>
+          <% } %>
+          <span><%= gonganText %></span>
+        <% if (gonganUrl) { %>
+        </a>
+        <% } %>
+      </span>
+      <% } %>
+    </div>
+    <% } %>
+
+  </div>
+</footer>

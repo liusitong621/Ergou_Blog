@@ -1,0 +1,34 @@
+<%
+/**
+ * Left sidebar partial.
+ * Used on index and post pages when sidebar position is 'both' or 'left'.
+ *
+ * On index pages: displays widgets (profile, recent posts, etc.)
+ * On post pages: displays TOC or category bar depending on theme settings.
+ */
+%>
+
+<!-- Left sidebar widgets -->
+<div class="top-widgets">
+  <% if (theme.widgets) { %>
+    <% theme.widgets.forEach(function(widget) { %>
+      <% if (widget.enable !== false && widget.position !== 'right') { %>
+        <% if (widget.type === 'profile' || widget.type === 'announcement') { %>
+          <%- partial('_partials/widgets/' + widget.type) %>
+        <% } %>
+      <% } %>
+    <% }); %>
+  <% } %>
+</div>
+
+<div class="sticky-widgets">
+  <% if (theme.widgets) { %>
+    <% theme.widgets.forEach(function(widget) { %>
+      <% if (widget.enable !== false && widget.position !== 'right') { %>
+        <% if (widget.type !== 'profile' && widget.type !== 'announcement') { %>
+          <%- partial('_partials/widgets/' + widget.type) %>
+        <% } %>
+      <% } %>
+    <% }); %>
+  <% } %>
+</div>
