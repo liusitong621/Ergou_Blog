@@ -11,8 +11,8 @@ date: 2026-10-27 20:30:00
 .cv-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:18px;border-bottom:2px solid #22424c;}
 .cv-title{margin:0;font-size:34px;font-weight:800;letter-spacing:6px;color:#1d333b;line-height:1.2;}
 .cv-slogan{margin:8px 0 0;font-size:13px;color:#6b7c83;letter-spacing:.5px;}
-.cv-photo{flex:0 0 auto;width:132px;height:176px;border-radius:8px;overflow:hidden;border:1px solid #e6ebed;box-shadow:0 3px 10px rgba(16,42,52,.12);background:#f5f7f8;}
-.cv-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.cv-photo{flex:0 0 auto;width:132px;height:176px;border-radius:8px;overflow:hidden;border:1px solid #e6ebed;box-shadow:0 3px 10px rgba(16,42,52,.12);background:#f5f7f8;line-height:0;}
+.cv-photo img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:cover;object-position:center top;display:block!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;}
 .cv-row{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:15px 0;border-bottom:1px solid #eef2f3;}
 .cv-row:last-child{border-bottom:none;padding-bottom:0;}
 .cv-label{align-self:start;background:#e6f3f2;color:#1d333b;font-weight:800;font-size:15px;letter-spacing:1.5px;text-align:center;padding:7px 6px;border-radius:6px;}
