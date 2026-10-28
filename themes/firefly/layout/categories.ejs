@@ -15,8 +15,14 @@ if (showLeftSidebar && showRightSidebar) {
   gridClass = 'has-right-sidebar';
 }
 
-var allCategories = site.categories.find({ parent: { $exists: false } }).sort('length', -1).filter(function(cat) {
-  return cat.length > 0;
+// 列出全部分类：父分类 + 子分类（不再按 parent 过滤，避免子分类被漏掉）
+var allCats = site.categories ? site.categories.toArray() : [];
+var catIndex = {};
+allCats.forEach(function(c) { catIndex[String(c._id)] = c; });
+var allCategories = allCats.filter(function(cat) {
+  return cat.posts && cat.posts.length > 0;
+}).sort(function(a, b) {
+  return (b.posts.length - a.posts.length) || String(a.name).localeCompare(String(b.name));
 });
 %>
 
@@ -41,12 +47,16 @@ var allCategories = site.categories.find({ parent: { $exists: false } }).sort('l
     <!-- Category Cards Grid -->
     <div class="categories-grid">
       <% if (allCategories.length > 0) { %>
-        <% allCategories.forEach(function(cat) { %>
+        <% allCategories.forEach(function(cat) {
+          var parentId = cat.parent ? String(cat.parent._id || cat.parent) : '';
+          var parentCat = parentId ? catIndex[parentId] : null;
+        %>
         <a href="<%= url_for(cat.path) %>" class="category-grid-card card-base">
           <div class="category-grid-icon">
-            <span class="material-symbols-outlined">folder</span>
+            <span class="material-symbols-outlined"><%= parentCat ? 'subdirectory_arrow_right' : 'folder' %></span>
           </div>
           <div class="category-grid-info">
+            <% if (parentCat) { %><span class="category-grid-parent">父级 · <%= parentCat.name %></span><% } %>
             <h2 class="category-grid-name"><%= cat.name %></h2>
             <span class="category-grid-count"><%= cat.posts.length %> 篇文章</span>
           </div>

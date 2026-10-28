@@ -219,7 +219,7 @@ tag:
 
 category:
   breadcrumb: 分类路径
-  title: 分类标题
+  title: 分类
   post_count: "%d 篇文章"
   total: "共 %d 个分类"
   no_posts: 暂无文章
