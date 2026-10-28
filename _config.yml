@@ -66,11 +66,11 @@ theme_config:
       alt: TwoDog
   profile:
     name: TwoDog
-    bio: 努力成为Agent Engineer的🥬🐶
+    bio: 努力成为Agent Engineer的🐶
     avatar: /img/avatar.jpg
   home_text:
     title: Welcome to TwoDog's Blog！
-    subtitle: 游千百遍千万遍快乐人间~
+    subtitle: Travel a thousand times, a thousand times, and enjoy the world of happiness~
   music:
     meting:
       type: song
