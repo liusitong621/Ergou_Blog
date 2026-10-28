@@ -507,3 +507,25 @@
     z-index: 1;
   }
 }
+
+/* ==========================================================================
+   [自定义] 关于页（简历）关闭 Banner：隐藏背景与标题遮罩，内容顶到导航栏下
+   通过 body.no-banner-about 控制，只影响关于页；用 !important 压过 JS 回写的
+   data-wallpaper-mode 规则与内联样式
+   ========================================================================== */
+
+body.no-banner-about #wallpaper-wrapper,
+body.no-banner-about #banner-dim-container,
+body.no-banner-about #banner-overlay-container {
+  display: none !important;
+}
+
+body.no-banner-about #main-content-wrapper {
+  top: 5.5rem !important;
+  margin-top: 0 !important;
+}
+
+body.no-banner-about #main-grid {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
