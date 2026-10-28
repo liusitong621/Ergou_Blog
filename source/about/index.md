@@ -73,11 +73,11 @@ date: 2026-10-27 20:30:00
   </section>
 
 <section class="cv-row">
-    <div class="cv-label">教育背景：</div>
+    <div class="cv-label">教育背景</div>
     <div class="cv-body">
       <div class="cv-item-head">
         <strong> 计算机科学与技术 · 本科 </strong>
-        <span class="cv-date">· 2024-2028</span>
+        <span class="cv-date">2024-2028</span>
       </div>
       <p class="cv-line">英语水平：CET-6</p>
       <p class="cv-line">主修课程：数据结构与算法，Agent开发，操作系统，计算机组成原理，计算机网络，python程序语言设计等</p>
@@ -116,27 +116,7 @@ date: 2026-10-27 20:30:00
     </div>
   </section>
 
-<section class="cv-row">
-    <div class="cv-label">竞赛经历</div>
-    <div class="cv-body">
-      <ul class="cv-ul">
-        <li>持续刷 LeetCode，整理算法笔记（数组、二分查找等），侧重工程化解题思路。</li>
-        <li>【刷题量／最高难度／竞赛经历，按实际补充】</li>
-      </ul>
-    </div>
-  </section>
-
-<section class="cv-row">
-    <div class="cv-label">自我评价</div>
-    <div class="cv-body">
-      <ul class="cv-ul">
-        <li>对 AI Agent 落地有持续热情，愿意把一个想法从 PRD 一路做到上线；</li>
-        <li>习惯把过程写成文档复盘，乐于折腾全栈与自动化。</li>
-      </ul>
-    </div>
-  </section>
-
-<p class="cv-foot">想聊聊 Agent、全栈或算法？欢迎通过上方邮箱或 GitHub 找我 ☕</p>
+<p class="cv-foot">想聊聊 Agent、全栈或 Web 开发？欢迎通过上方邮箱或 GitHub 找我 ☕</p>
 
 </div>
 </div>
