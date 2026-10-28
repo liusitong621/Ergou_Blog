@@ -1,6 +1,8 @@
 ---
 title: "实验室智能助手（Agent）— 上线前补充方案"
 date: 2026-10-19 12:56:43
+categories:
+  - project
 ---
 
 # 实验室智能助手（Agent）— 上线前补充方案

@@ -1,6 +1,8 @@
 ---
 title: "实验室智能助手（Agent）模块 — 产品需求文档（PRD）"
 date: 2026-10-28 11:13:20
+categories:
+  - project
 ---
 
 # 实验室智能助手（Agent）模块 — 产品需求文档（PRD）
